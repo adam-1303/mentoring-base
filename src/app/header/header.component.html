@@ -1,0 +1,51 @@
+<div class="header">
+   <div class="header-left">
+      <div class="header-logo">
+            <img src="/assets/Frame.svg" alt="логотип сайта">
+      </div>
+      <nav class="header-nav">
+            <div class="header-nav-item" routerLink="users">{{headerItem1}}</div>
+            <div class="header-nav-item" routerLink="/">{{aboutCompany}}</div>
+            <div class="header-nav-item" *ngIf="isShowCatalog">{{headerItem3}}</div>
+      </nav>
+      <button (click)="isShowCatalog = !isShowCatalog">Скрыть/Показать</button>
+      <button (click)="changeMenuText()">Изменить текст</button>
+      <button routerLink="users">Пользователи</button>
+   </div>
+   <div class="header-right">
+      <div class="header-photo">
+            <img src="/assets/Phone.svg" alt="телефон">
+      </div>
+      <nav class="header-nav">
+      <nav class="header-nav-item">+7 (965) 084-29-29</nav>
+      </nav>
+      <div class="header-photography">
+            <img src="/assets/heart 1.svg" alt="картинка">
+      </div>
+      <button class="cart">
+            <img src="/assets/Mask_group.svg" alt="корзина">
+            <span class="emprty">Пусто</span>
+      </button>
+   </div>
+</div>
+
+<div class="header2">
+   <div class="header2-left">
+      <div class="header2-nav-photo">
+            <img src="/assets/img.svg" alt="Каталог">
+      </div>
+      <div class="header2-nav">
+        <nav class="header2-nav-item" *ngFor="let item of menuItems">{{item}}</nav>
+      </div>
+   </div>
+   <div class="header2-right">
+      <div class="input">
+            <input class="input_header" type="search-2" placeholder="Поиск, например Круг зачистной">
+            <img src="/assets/gip.svg" alt="лого лупа">
+      </div>
+      <div style="display: flex;">
+            <img style="margin-right: 5px;" src="/assets/ege.svg" alt="лого Москва">
+      </div>
+   </div>
+</div>
+<router-outlet></router-outlet>

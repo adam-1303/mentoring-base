@@ -1,0 +1,4 @@
+КОМПОНЕНТ СПИСКА ЮЗЕРОВ
+
+   <div class="todos" *ngFor="let todo of todos " style=" display: flex;flex-wrap: wrap; width: 100%;">
+      <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-card></div>
