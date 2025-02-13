@@ -18,6 +18,6 @@ export class TodoCardComponent {
    deleteTodo = new EventEmitter()
 
    onDeleteTodo(todoId: number) {
-      this.deleteTodo.emit()
+      this.deleteTodo.emit(todoId);
    }
 }
