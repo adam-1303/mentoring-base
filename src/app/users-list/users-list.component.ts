@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { UsersApiService } from "../users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../users.service";
+import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
 
 export interface User {
       id: number;
       name: string;
       username: string;
       email: string;
-      adress: {
+      adress?: {
             street: string;
             suite: string;
             city: string;
@@ -19,13 +20,22 @@ export interface User {
                   lng: string;
             };
       };
-      phone: string;
+      phone?: string;
       website: string;
       company: {
             name: string;
-            cathPhrase: string;
-            bs: string;
+            cathPhrase?: string;
+            bs?: string;
       };
+};
+
+export interface Resu {
+      id: number;
+      name: string;
+      username: string;
+      email: string;
+      website: string;
+      companyName: string;
 }
 
 @Component({
@@ -33,7 +43,7 @@ export interface User {
       templateUrl: './users-list.component.html',
       styleUrl: './users-list.component.scss',
       standalone: true,
-      imports: [NgFor, UserCardComponent, AsyncPipe],
+      imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent],
       changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -52,4 +62,18 @@ export class UsersListComponent {
       deleteUser(id: number) {
             this.usersService.deleteUser(id)
       }
-}
+
+      public createUser(formData: Resu) {
+      this.usersService.creatUser({
+            id: new Date().getTime(),
+            name: formData.name,
+            username: formData.username,
+            email: formData.email,
+            website: formData.website,
+            company: {
+                  name: formData.companyName}
+            });
+
+            console.log('ДАННЫЕ ФОРМЫ:', event);
+      };
+};

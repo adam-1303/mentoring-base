@@ -1,4 +1,6 @@
-КОМПОНЕНТ СПИСКА ЮЗЕРОВ
+<app-create-todos-form (createTodos)="createTodos($event)"></app-create-todos-form>
 
-   <div class="todos" *ngFor="let todo of todosService.todosSubjest | async " style=" display: flex;flex-wrap: wrap; width: 100%;">
+<div class="todos">
+   <div *ngFor="let todo of todosService.todosSubjest | async " >
       <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-card></div>
+</div>

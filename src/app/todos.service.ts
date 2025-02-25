@@ -28,9 +28,15 @@ export class TodosService {
       }
    
       creatTodo(todo: Todo) {
-         this.todosSubjest.next(
-            [...this.todosSubjest.value, todo]
-         )
+         const existingUser = this.todosSubjest.value.find(
+         (currentElement) => currentElement.userId === todo.userId);
+
+      if (existingUser !== undefined) {
+         alert('ТАКОЙ ПОЛЬЗОВАТЕЛЬ УЖЕ ЕСТЬ')} 
+      else {
+         this.todosSubjest.next([...this.todosSubjest.value, todo])
+         alert('ПОЛЬЗОВАТЕЛЬ ДОБАВЛЕН')
+      }
       }
    
       deleteTodo(id: number) {
