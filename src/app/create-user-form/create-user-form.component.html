@@ -1,17 +1,27 @@
 <h1>CREATE USER FORM</h1>
 <div class="container" >
    <form class="create" [formGroup]="form" (ngSubmit)="submitForm()">
-      <p>NAME:</p>
-      <input type="text" class="form-input" formControlName="name">
-      <p>USERNAME:</p>
-      <input type="text" class="form-input" formControlName="username">
-      <p>EMAIL:</p>
-      <input type="text" class="form-input" formControlName="email">
-      <p>WEBSITE:</p>
-      <input type="text" class="form-input" formControlName="website">
-      <p>COMPANY.NAME:</p>
-      <input type="text" class="form-input" formControlName="companyName">
-      <button class="user" [disabled]="!form.valid">
+   <mat-form-field>
+      <mat-label>NAME:</mat-label>
+      <input matInput type="text" class="form-input" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>USERNAME:</mat-label>
+      <input matInput type="text" class="form-input" formControlName="username">
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>EMAIL:</mat-label>
+      <input matInput type="text" class="form-input" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>WEBSITE:</mat-label>
+      <input matInput type="text" class="form-input" formControlName="website">
+      </mat-form-field>
+      <mat-form-field>
+      <mat-label>COMPANY.NAME:</mat-label>
+      <input matInput type="text" class="form-input" formControlName="companyName"> 
+      </mat-form-field>
+      <button mat-raised-button class="user" [disabled]="!form.valid">
       CREATE USER</button>
    </form>
 </div>
