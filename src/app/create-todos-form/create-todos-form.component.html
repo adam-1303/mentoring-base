@@ -1,19 +1,37 @@
-<h1>CREATE TODO FORM</h1>
+
 
 <div class="container-2">
+   <h1>CREATE TODO FORM</h1>
    <form class="create-2" [formGroup]="form" (ngSubmit)="submitForm()">
-   <mat-form-field>
-      <mat-label>Название задачи</mat-label>
-      <input matInput type="text" class="form-input-2" formControlName="userId">
+
+      <mat-form-field appearance="outline">
+         <mat-label>Название задачи</mat-label>
+         <input matInput type="text" class="form-input-2" formControlName="userId">
+         <mat-error>Введите название задачи</mat-error>
+         <mat-icon color="primary">edit</mat-icon>
       </mat-form-field>
-      <mat-form-field>
-      <mat-label>Автор задачи</mat-label>
-      <input matInput type="text" class="form-input-2" formControlName="title">
+
+      <mat-form-field appearance="outline">
+         <mat-label>Автор задачи</mat-label>
+         <input matInput type="text" class="form-input-2" formControlName="title">
+         <mat-error>Введите автора задачи</mat-error>
+         <mat-icon color="primary">edit</mat-icon>
       </mat-form-field>
-      <mat-form-field>
-      <mat-label>Задача завершен?</mat-label>
-      <input matInput type="text" class="form-input-2" formControlName="completed">
+
+      <mat-form-field appearance="outline">
+         <mat-label>Задача завершена?</mat-label>
+         <mat-select>
+         <mat-option value="">
+            <mat-icon>check</mat-icon>Да
+         </mat-option>
+         <mat-option value="">
+            <mat-icon>close</mat-icon>Нет
+         </mat-option>
+         </mat-select>
+         <input matInput type="text" class="form-input-2" formControlName="completed">
+         <mat-icon color="primary">edit</mat-icon>
       </mat-form-field>
-      <button mat-raised-button class="todos-2" [disabled]="!form.valid">+ Add Todo</button>
+
+      <button mat-raised-button color="primary" class="todos-2" [disabled]="!form.valid" type="submit" (click)="submitForm()"> <mat-icon>add</mat-icon> Add Todo</button>
    </form>
 </div>

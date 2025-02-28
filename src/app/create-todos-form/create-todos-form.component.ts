@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from "@angular/core";
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import { MatButtonModule } from '@angular/material/button';
-import { MatLabel } from '@angular/material/form-field'
+import { MatError, MatLabel } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon } from "@angular/material/icon";
 
 
 export function completedValidator(): ValidatorFn{
@@ -22,7 +23,7 @@ export function completedValidator(): ValidatorFn{
    templateUrl: './create-todos-form.component.html',
    styleUrl: './create-todos-form.component.scss',
    standalone: true,
-   imports: [ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatLabel,MatSelectModule],
+   imports: [ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatLabel,MatSelectModule,MatIcon,MatError],
    changeDetection: ChangeDetectionStrategy.OnPush})
 
    

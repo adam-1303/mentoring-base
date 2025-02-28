@@ -1,18 +1,23 @@
 .container{
-margin: 30px 30px 30px 30px;
+   margin: 30px 30px 30px 30px;
 }
 
 .create{
    display: flex;
    flex-direction: column;
-   width: 200px;
-   }
+   width: 250px;
+}
 
-   .user{
-   width: 200px;
-   margin-top: 20px;
-   }
+.user{
+   width: 250px;
+   
 
-   .form-input{
-   width: 150px;
-   }
+}
+
+.form-input{
+   width: 180px;
+}
+
+.h1 {
+   margin-left: 12px;
+}
