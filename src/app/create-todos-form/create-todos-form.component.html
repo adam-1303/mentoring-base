@@ -1,5 +1,3 @@
-
-
 <div class="container-2">
    <h1>CREATE TODO FORM</h1>
    <form class="create-2" [formGroup]="form" (ngSubmit)="submitForm()">
@@ -20,14 +18,6 @@
 
       <mat-form-field appearance="outline">
          <mat-label>Задача завершена?</mat-label>
-         <mat-select>
-         <mat-option value="">
-            <mat-icon>check</mat-icon>Да
-         </mat-option>
-         <mat-option value="">
-            <mat-icon>close</mat-icon>Нет
-         </mat-option>
-         </mat-select>
          <input matInput type="text" class="form-input-2" formControlName="completed">
          <mat-icon color="primary">edit</mat-icon>
       </mat-form-field>

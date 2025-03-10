@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from "@angular/material/icon";
+import { MatOptionModule } from "@angular/material/core";
 
 
 export function completedValidator(): ValidatorFn{
@@ -23,7 +24,7 @@ export function completedValidator(): ValidatorFn{
    templateUrl: './create-todos-form.component.html',
    styleUrl: './create-todos-form.component.scss',
    standalone: true,
-   imports: [ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatLabel,MatSelectModule,MatIcon,MatError],
+   imports: [ReactiveFormsModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatLabel,MatSelectModule,MatIcon,MatError,MatOptionModule],
    changeDetection: ChangeDetectionStrategy.OnPush})
 
    
