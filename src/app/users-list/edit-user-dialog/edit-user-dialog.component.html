@@ -1,0 +1,40 @@
+<h1>{{data.user.name}}</h1>
+<form class="create" [formGroup]="form">
+
+      <mat-form-field appearance="outline">
+         <mat-label>NAME</mat-label>
+         <input matInput placeholder="Enter your name" type="text" class="form-input" formControlName="name">
+         <mat-icon matSuffix color="primary">edit</mat-icon>
+         <mat-error>Слишком короткое имя</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>USERNAME</mat-label>
+         <input matInput placeholder="Enter your last name" type="text" class="form-input" formControlName="username">
+         <mat-icon matSuffix color="primary">edit</mat-icon>
+         <mat-error>Слишком короткое имя</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>EMAIL</mat-label>
+         <input matInput placeholder="adam@example.com" type="text" class="form-input" formControlName="email">
+         <mat-icon matSuffix color="primary">edit</mat-icon>
+         <mat-error>Требуется электронная почта</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>WEBSITE</mat-label>
+         <input matInput placeholder="Maintain a website" type="text" class="form-input" formControlName="website">
+         <mat-icon matSuffix color="primary">edit</mat-icon>
+         <mat-error>Веб-сайт введен неправильно</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>COMPANY.NAME</mat-label>
+         <input matInput placeholder="Laed your company" type="text" class="form-input" formControlName="companyName">
+         <mat-error>Введите компанию</mat-error> 
+         <mat-icon matSuffix color="primary">edit</mat-icon>
+      </mat-form-field>
+
+      <button type="submit"  mat-raised-button color="primary" class="user" [disabled]="form.invalid" [mat-dialog-close]="userWithUpdateFields">EDIT USER</button>
+   </form>

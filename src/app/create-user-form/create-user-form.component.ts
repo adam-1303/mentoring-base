@@ -7,8 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from "@angular/material/icon";
 
-
-
 @Component({
    selector: 'app-create-user-form',
    templateUrl: './create-user-form.component.html',
