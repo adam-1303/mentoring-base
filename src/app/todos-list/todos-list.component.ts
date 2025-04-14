@@ -13,7 +13,7 @@ export interface Todo {
 }
 
 @Component({
-      selector: 'app-users-list',
+      selector: 'app-todos-list',
       templateUrl: './todos-list.component.html',
       styleUrl: './todos-list.component.scss',
       standalone: true,
@@ -36,6 +36,11 @@ export class TodosListComponent{
       deleteTodo(id: number) {
             this.todosService.deleteTodo(id)
       }
+
+      editTodo(todo: any) {
+            this.todosService.editTodo(todo)
+      }
+
       public createTodos(formItem: Todo) {
       this.todosService.creatTodo({
             id: new Date().getTime(),

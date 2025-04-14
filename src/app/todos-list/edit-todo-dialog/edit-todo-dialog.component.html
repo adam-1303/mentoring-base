@@ -1,0 +1,27 @@
+<div class="container-2">
+   <h1>CREATE TODO FORM</h1>
+   <form class="create-2" [formGroup]="form">
+
+      <mat-form-field appearance="outline">
+         <mat-label>Название задачи</mat-label>
+         <input matInput type="text" class="form-input-2" formControlName="userId">
+         <mat-error>Введите название задачи</mat-error>
+         <mat-icon color="primary">edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>Автор задачи</mat-label>
+         <input matInput type="text" class="form-input-2" formControlName="title">
+         <mat-error>Введите автора задачи</mat-error>
+         <mat-icon color="primary">edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>Задача завершена?</mat-label>
+         <input matInput type="text" class="form-input-2" formControlName="completed">
+         <mat-icon color="primary">edit</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="todos-2" [disabled]="!form.valid" type="submit" [mat-dialog-close]="todoWithUpdatedFields"> <mat-icon>add</mat-icon> Add Todo</button>
+   </form>
+</div>

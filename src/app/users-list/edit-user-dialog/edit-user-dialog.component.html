@@ -36,5 +36,5 @@
          <mat-icon matSuffix color="primary">edit</mat-icon>
       </mat-form-field>
 
-      <button type="submit"  mat-raised-button color="primary" class="user" [disabled]="form.invalid" [mat-dialog-close]="userWithUpdateFields">EDIT USER</button>
+      <button type="submit"  mat-raised-button color="primary" class="user" [disabled]="!form.valid" [mat-dialog-close]="userWithUpdateFields">EDIT USER</button>
    </form>

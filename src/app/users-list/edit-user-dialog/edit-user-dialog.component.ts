@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogClose } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { User } from "../users-list.component";
 
 @Component({
    selector: 'app-edit-user-dialog',
@@ -15,7 +16,7 @@ import { MatInputModule } from "@angular/material/input";
    })
 
 export class EditUserDialogComponent {
-   readonly data = inject(MAT_DIALOG_DATA);
+   readonly data = inject<{ user: User}>(MAT_DIALOG_DATA);
    
    public form = new FormGroup({
       name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(2)]),
