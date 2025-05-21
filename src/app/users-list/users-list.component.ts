@@ -54,20 +54,18 @@ export class UsersListComponent {
       constructor() {
             this.usersApiService.getUsers().subscribe(
                   (response: any) => {
-                        this.usersService.setUsers(response);
-            }
-      )
-      }
+                        this.usersService.setUsers(response)
+                  }
+            )
+      };
 
       deleteUser(id: number) {
             this.usersService.deleteUser(id)
-      }
+      };
 
       editUser(user:any) {
             this.usersService.editUser(user)
-      }
-
-
+      };
 
       public createUser(formData: Resu) {
       this.usersService.creatUser({
@@ -79,7 +77,5 @@ export class UsersListComponent {
             company: {
                   name: formData.companyName}
             });
-
-            console.log('ДАННЫЕ ФОРМЫ:', event);
       };
 };

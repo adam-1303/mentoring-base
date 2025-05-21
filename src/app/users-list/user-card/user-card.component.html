@@ -1,10 +1,10 @@
 
-   <div style="width: 200px;height: 250px;border: 1px solid black;margin: 10px;padding: 10px;">
+   <div class="users">
    <p>{{user.name}}</p>
    <p>{{user.username}}</p>
    <p>{{user.email}}</p>
    <p>{{user.website}}</p>
    <p>{{user.company.name}}</p>
-   <button  (click)="onDeleteUser(user.id)">УДАЛИТЬ ЮЗЕРА</button>
+   <button  (click)="onDeleteUser()">УДАЛИТЬ ЮЗЕРА</button>
    <button  (click)="openDialog()">РЕДАКТИРОВАТЬ</button>
    </div> 

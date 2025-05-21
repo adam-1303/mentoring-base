@@ -1,10 +1,11 @@
 import { Component, inject } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
-import { MAT_DIALOG_DATA, MatDialogClose } from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogClose, MatDialogTitle} from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import {MatCardModule} from '@angular/material/card';
 import { User } from "../users-list.component";
 
 @Component({
@@ -12,7 +13,7 @@ import { User } from "../users-list.component";
    templateUrl: './edit-user-dialog.component.html',
    styleUrl: './edit-user-dialog.component.scss',
    standalone: true,
-   imports: [ReactiveFormsModule,MatFormFieldModule,MatDialogClose,MatInputModule,MatButtonModule,MatIconModule]
+   imports: [ReactiveFormsModule, MatFormFieldModule, MatDialogClose, MatInputModule, MatButtonModule, MatIconModule, MatCardModule]
    })
 
 export class EditUserDialogComponent {

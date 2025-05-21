@@ -48,7 +48,5 @@ export class TodosListComponent{
             title: formItem.title,
             completed: formItem.completed,
             });
-
-            console.log('ДАННЫЕ ФОРМЫ:', event);
       }
 }

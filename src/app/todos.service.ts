@@ -8,13 +8,12 @@ export class TodosService {
    todosSubjest = new BehaviorSubject<Todo[]>([]);
       todos: Todo[] = [];
    
-      setTodos(todos: Todo[]) {
+      setTodos(todos: Todo[]): void {
          this.todos = todos;
          this.todosSubjest.next(todos);
       }
    
       editTodo(editedTodo: Todo) {
-      
          this.todosSubjest.next(
             this.todosSubjest.value.map(
                todo => {
@@ -32,10 +31,10 @@ export class TodosService {
          (currentElement) => currentElement.userId === todo.userId);
 
       if (existingUser !== undefined) {
-         alert('ТАКОЙ ПОЛЬЗОВАТЕЛЬ УЖЕ ЕСТЬ')} 
+         alert('Еакая задача уже существует')} 
       else {
          this.todosSubjest.next([...this.todosSubjest.value, todo])
-         alert('ПОЛЬЗОВАТЕЛЬ ДОБАВЛЕН')
+         alert('Задача успешно создана')
       }
       }
    

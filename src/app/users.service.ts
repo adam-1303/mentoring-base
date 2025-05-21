@@ -7,20 +7,15 @@ export class UsersService {
    usersSubject= new BehaviorSubject<User[]>([]);
    users: User[] = [];
 
-   setUsers(users: User[]) {
+   setUsers(users: User[]): void {
       this.usersSubject.next(users)
    }
 
    editUser(editedUser: User) {
-   
       this.usersSubject.next( 
          this.usersSubject.value.map(
-            user => {
-               if (user.id === editedUser.id) {
-                  return editedUser}
-               else {
-                  return user}
-            }
+            (user: User) =>
+               user.id === editedUser.id ? editedUser : user
          )
       )
    }
@@ -43,7 +38,7 @@ export class UsersService {
             item => {
                if (id === item.id) {
                   return false}
-            else {return true}
+               else {return true}
             }
          )
       )  
