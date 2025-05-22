@@ -20,10 +20,10 @@ export class DeleteUserDialogComponent {
    ) {}
 
    onConfirm(): void {
-      this.dialogRef.close(true);
+      this.dialogRef.close(false);
    }
 
    onCancel(): void {
-      this.dialogRef.close(false);
+      this.dialogRef.close(true);
    }
 }

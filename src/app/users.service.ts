@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { User } from "./users-list/users-list.component";
 import { BehaviorSubject } from "rxjs";
 
-@Injectable({providedIn: 'root'})
+@Injectable ({providedIn: 'root'})
 export class UsersService {
    usersSubject= new BehaviorSubject<User[]>([]);
    users: User[] = [];
 
    setUsers(users: User[]): void {
-      this.usersSubject.next(users)
+      this.users = users;
+      this.usersSubject.next(users);
    }
 
    editUser(editedUser: User) {
@@ -31,16 +32,10 @@ export class UsersService {
          alert('ПОЛЬЗОВАТЕЛЬ ДОБАВЛЕН')
       }
    }
-
-   deleteUser(id: number) {
-      this.usersSubject.next(
-         this.usersSubject.value.filter(
-            item => {
-               if (id === item.id) {
-                  return false}
-               else {return true}
-            }
-         )
-      )  
+   
+   deleteUser(id: number): void {
+      const updatedUsers = this.usersSubject.value.filter(user => user.id !== id);
+      this.users = updatedUsers; 
+      this.usersSubject.next(updatedUsers);
    }
 }
