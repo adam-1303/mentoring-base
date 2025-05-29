@@ -34,7 +34,7 @@ export class UsersService {
    }
    
    deleteUser(id: number): void {
-      const updatedUsers = this.usersSubject.value.filter(user => user.id !== id);
+      const updatedUsers: User[] = this.usersSubject.value.filter((user: User): boolean => user.id !== id);
       this.users = updatedUsers; 
       this.usersSubject.next(updatedUsers);
    }

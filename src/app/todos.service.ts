@@ -31,7 +31,7 @@ export class TodosService {
          (currentElement) => currentElement.userId === todo.userId);
 
       if (existingUser !== undefined) {
-         alert('Еакая задача уже существует')} 
+         alert('Такая задача уже существует')} 
       else {
          this.todosSubjest.next([...this.todosSubjest.value, todo])
          alert('Задача успешно создана')
@@ -42,9 +42,9 @@ export class TodosService {
          this.todosSubjest.next(
             this.todosSubjest.value.filter(
                item => {
-                  if (id === item.id) {
-                     return false}
-               else {return true}
+                  if (id === item.id) 
+                     {return false}
+                  else {return true}
                }
             )
          )  

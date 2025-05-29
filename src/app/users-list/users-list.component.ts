@@ -29,7 +29,7 @@ export interface User {
       };
 };
 
-export interface Resu {
+export interface Users {
       id: number;
       name: string;
       username: string;
@@ -52,22 +52,20 @@ export class UsersListComponent {
       readonly usersService = inject(UsersService);
       
       constructor() {
-            this.usersApiService.getUsers().subscribe(
-                  (response: any) => {
-                        this.usersService.setUsers(response)
-                  }
-            )
-      };
+            this.usersApiService.getUsers().subscribe((response: any) => {
+                  this.usersService.setUsers(response);
+            });
+      }
 
       deleteUser(id: number) {
             this.usersService.deleteUser(id)
       };
 
-      editUser(user:any) {
+      editUser(user: User) {
             this.usersService.editUser(user)
       };
 
-      public createUser(formData: Resu) {
+      public createUser(formData: Users) {
       this.usersService.creatUser({
             id: new Date().getTime(),
             name: formData.name,

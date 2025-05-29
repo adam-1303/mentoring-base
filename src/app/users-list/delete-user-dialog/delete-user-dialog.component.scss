@@ -1,0 +1,27 @@
+.delete-dialog-card {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--dialog-bg, #fff);
+  color: var(--dialog-fg, #333);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
+
+  mat-dialog-content {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+      min-width: 80px;
+    }
+  }
+}

@@ -1,7 +1,9 @@
-<mat-dialog-content>
-  <p>Вы действительно хотите удалить пользователя <strong>{{ data.userName}}</strong></p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onConfirm()">Нет</button>
-  <button mat-button color="warn" (click)="onCancel()">Да</button>
-</mat-dialog-actions>
+<mat-card class="delete-dialog-card">
+  <mat-dialog-content>
+    <p>Вы действительно хотите удалить пользователя <strong>{{ data.userName}}</strong>?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button color="warn" (click)="dialogRef.close(true)">Да</button>
+    <button mat-button (click)="dialogRef.close(false)">Нет</button>
+  </mat-dialog-actions>
+</mat-card>

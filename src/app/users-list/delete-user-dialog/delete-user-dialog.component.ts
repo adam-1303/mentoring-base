@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, inject, Inject } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
@@ -14,16 +14,6 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef } fro
 
 export class DeleteUserDialogComponent {
 
-   constructor(
-      public dialogRef: MatDialogRef<DeleteUserDialogComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { userName: string }
-   ) {}
-
-   onConfirm(): void {
-      this.dialogRef.close(false);
-   }
-
-   onCancel(): void {
-      this.dialogRef.close(true);
-   }
+   dialogRef = inject(MatDialogRef<DeleteUserDialogComponent>);
+   data = inject<{ userName: string }>(MAT_DIALOG_DATA);
 }
