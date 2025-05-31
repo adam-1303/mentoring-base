@@ -20,9 +20,9 @@ export class EditTodoDialogComponent {
    readonly data = inject<{ todo: Todo }>(MAT_DIALOG_DATA)
       
    public form = new FormGroup({
-      "userId": new FormControl(this.data.todo.userId, [Validators.required]),
-      "title": new FormControl(this.data.todo.title, [Validators.required]),
-      "completed": new FormControl(this.data.todo.completed, [Validators.required, completedValidator()]),
+      userId: new FormControl(this.data.todo.userId, [Validators.required]),
+      title: new FormControl(this.data.todo.title, [Validators.required]),
+      completed: new FormControl(this.data.todo.completed, [Validators.required, completedValidator()]),
    });
    
    get todoWithUpdatedFields(): Todo {

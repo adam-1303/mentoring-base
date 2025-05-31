@@ -20,10 +20,10 @@ export class UserCardComponent {
    user!: User;
 
    @Output()
-   deleteUser = new EventEmitter();
+   deleteUser = new EventEmitter<number>();
 
    @Output()
-   editUser = new EventEmitter();
+   editUser = new EventEmitter<User>();
 
    readonly snackBar = inject(MatSnackBar)
 
@@ -37,7 +37,7 @@ export class UserCardComponent {
       dialogRef.afterClosed().subscribe((editResult: User) => {
          if (editResult) {
             this.editUser.emit(editResult)
-            this.snackBar.open('Пользователь обновлен', 'Закрыть', { duration: 3000})
+            this.snackBar.open('Пользователь обновлен', 'Закрыть', { duration: 3000 })
          }
       });
    }
@@ -50,7 +50,7 @@ export class UserCardComponent {
       dialogRef.afterClosed().subscribe((deleteResult: boolean) => {
          if (deleteResult) {
             this.deleteUser.emit(this.user.id)
-            this.snackBar.open('Пользователь удален', 'Закрыть', { duration: 3000})
+            this.snackBar.open('Пользователь удален', 'Закрыть', { duration: 3000 })
          }
       });
    }

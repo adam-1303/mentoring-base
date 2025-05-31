@@ -6,29 +6,29 @@ import { BehaviorSubject } from "rxjs";
 
 export class TodosService {
    todosSubjest = new BehaviorSubject<Todo[]>([]);
-      todos: Todo[] = [];
+   todos: Todo[] = [];
    
-      setTodos(todos: Todo[]): void {
-         this.todos = todos;
-         this.todosSubjest.next(todos);
-      }
+   setTodos(todos: Todo[]): void {
+      this.todos = todos;
+      this.todosSubjest.next(todos);
+   }
    
-      editTodo(editedTodo: Todo) {
-         this.todosSubjest.next(
-            this.todosSubjest.value.map(
-               todo => {
-                  if (todo.id === editedTodo.id) {
-                     return editedTodo}
-                  else {
-                     return todo}
-               }
-            )
+   editTodo(editedTodo: Todo) {
+      this.todosSubjest.next(
+         this.todosSubjest.value.map(
+            todo => {
+               if (todo.id === editedTodo.id) {
+                  return editedTodo}
+               else {
+                  return todo}
+            }
          )
-      }
+      )
+   }
    
-      creatTodo(todo: Todo) {
-         const existingUser = this.todosSubjest.value.find(
-         (currentElement) => currentElement.userId === todo.userId);
+   creatTodo(todo: Todo) {
+      const existingUser = this.todosSubjest.value.find(
+      (currentElement) => currentElement.userId === todo.userId);
 
       if (existingUser !== undefined) {
          alert('Такая задача уже существует')} 
@@ -36,17 +36,11 @@ export class TodosService {
          this.todosSubjest.next([...this.todosSubjest.value, todo])
          alert('Задача успешно создана')
       }
-      }
+   }
    
-      deleteTodo(id: number) {
-         this.todosSubjest.next(
-            this.todosSubjest.value.filter(
-               item => {
-                  if (id === item.id) 
-                     {return false}
-                  else {return true}
-               }
-            )
-         )  
-      }
+   deleteTodo(id: number) {
+      const updatedTodos = this.todosSubjest.value.filter(todo => todo.id !==id)
+      this.todos = updatedTodos;
+      this.todosSubjest.next(updatedTodos);
+   }
 }

@@ -52,7 +52,7 @@ export class UsersListComponent {
       readonly usersService = inject(UsersService);
       
       constructor() {
-            this.usersApiService.getUsers().subscribe((response: any) => {
+            this.usersApiService.getUsers().subscribe((response: User[]) => {
                   this.usersService.setUsers(response);
             });
       }

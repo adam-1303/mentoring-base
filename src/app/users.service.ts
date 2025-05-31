@@ -15,8 +15,7 @@ export class UsersService {
    editUser(editedUser: User) {
       this.usersSubject.next( 
          this.usersSubject.value.map(
-            (user: User) =>
-               user.id === editedUser.id ? editedUser : user
+            (user: User) => user.id === editedUser.id ? editedUser : user
          )
       )
    }
@@ -34,7 +33,7 @@ export class UsersService {
    }
    
    deleteUser(id: number): void {
-      const updatedUsers: User[] = this.usersSubject.value.filter((user: User): boolean => user.id !== id);
+      const updatedUsers = this.usersSubject.value.filter(user => user.id !== id);
       this.users = updatedUsers; 
       this.usersSubject.next(updatedUsers);
    }
