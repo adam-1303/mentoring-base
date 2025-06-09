@@ -1,14 +1,13 @@
 import { Injectable } from "@angular/core";
 import { User } from "./users-list/users-list.component";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable ({providedIn: 'root'})
 export class UsersService {
-   usersSubject= new BehaviorSubject<User[]>([]);
-   users: User[] = [];
+   usersSubject = new BehaviorSubject<User[]>([]);
+   users$: Observable<User[]> = this.usersSubject.asObservable();
 
    setUsers(users: User[]): void {
-      this.users = users;
       this.usersSubject.next(users);
    }
 
@@ -22,7 +21,8 @@ export class UsersService {
 
    creatUser(user: User) {
       const existingUser = this.usersSubject.value.find(
-         (currentElement) => currentElement.email === user.email);
+         (currentElement) => currentElement.email === user.email
+      );
 
       if (existingUser !== undefined) {
          alert('ТАКОЙ ПОЛЬЗОВАТЕЛЬ УЖЕ ЕСТЬ')} 
@@ -33,8 +33,7 @@ export class UsersService {
    }
    
    deleteUser(id: number): void {
-      const updatedUsers = this.usersSubject.value.filter(user => user.id !== id);
-      this.users = updatedUsers; 
+      const updatedUsers = this.usersSubject.value.filter((user: User): boolean => user.id !== id);
       this.usersSubject.next(updatedUsers);
    }
 }
