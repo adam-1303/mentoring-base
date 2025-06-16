@@ -1,10 +1,10 @@
 
    <div class="users">
-   <p>{{user.name}}</p>
-   <p>{{user.username}}</p>
-   <p>{{user.email}}</p>
-   <p>{{user.website}}</p>
-   <p>{{user.company.name}}</p>
+   <p>{{user.name | customUpperCase }}</p>
+   <p>{{user.username | customUpperCase }}</p>
+   <p>{{user.email | customUpperCase }}</p>
+   <p>{{user.website | customUpperCase }}</p>
+   <p>{{user.company.name | customUpperCase }}</p>
    <button  (click)="onDeleteUser()">УДАЛИТЬ ЮЗЕРА</button>
-   <button  (click)="openDialog()">РЕДАКТИРОВАТЬ</button>
+   <button  (click)="openDialog()">РЕДАКТИРОВАТЬ</button>  
    </div> 

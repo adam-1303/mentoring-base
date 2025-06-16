@@ -37,7 +37,7 @@ export class TodosListComponent{
             this.todosService.deleteTodo(id)
       }
 
-      editTodo(todo: any) {
+      editTodo(todo: Todo) {
             this.todosService.editTodo(todo)
       }
 

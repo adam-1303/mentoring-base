@@ -5,6 +5,7 @@
             <img src="/assets/Frame.svg" alt="логотип сайта">
         </div>
         <nav class="header-nav">
+            <h2>{{ today | date: 'medium'}}</h2>
             <div class="header-nav-item" routerLink="users">{{headerItem1}}</div>
             <div class="header-nav-item" routerLink="header">{{aboutCompany}}</div>
             <div class="header-nav-item" *ngIf="isShowCatalog">{{headerItem3}}</div>

@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
@@ -20,36 +20,38 @@ const upperCaseMenuItems = menuItems.map(
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgFor, RouterLink],
+  imports: [RouterOutlet, NgIf, NgFor, RouterLink,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  today: Date = new Date();
+
   title = 'mentoring-first';
 
   isShowCatalog : boolean = true;
 
-  readonly headerItem1 = 'Главная'
+  readonly headerItem1 = 'Главная';
 
-  readonly headerItem2 = 'О компании'
+  readonly headerItem2 = 'О компании';
 
-  readonly header2Item4 : string = upperCaseMenuItems[0]
+  readonly header2Item4: string = upperCaseMenuItems[0];
 
   readonly aboutCompany : string = aboutCompany;
 
   menuItems : string[] = upperCaseMenuItems;
 
-  readonly headerItem3 = 'Каталог'
+  readonly headerItem3 = 'Каталог';
 
-  readonly header2Item = 'Каталог'
+  readonly header2Item = 'Каталог';
 
-  readonly header2Item1 = 'Стройматериалы'
+  readonly header2Item1 = 'Стройматериалы';
 
-  readonly header2Item2 = 'Инструменты'
+  readonly header2Item2 = 'Инструменты';
 
-  readonly header2Item3 = 'Электрика'
+  readonly header2Item3 = 'Электрика';
 
-  readonly header2item4 = 'Интерьер и Одежда'
+  readonly header2item4 = 'Интерьер и Одежда';
 
   isShowImg : boolean = true;
 

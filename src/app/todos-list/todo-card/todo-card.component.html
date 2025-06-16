@@ -1,14 +1,10 @@
 <div class="todos">
-
    <p>ТЕКСТ ЗАДАЧИ</p>
-   <div>{{todo.title}}</div>
-
+   <p>{{todo.title | truncateCharacters: 20}}</p>
    <p>АВТОР ЗАДАЧИ</p>
-   <div>{{todo.userId}}</div>
-
+   <p>{{todo.userId}}</p>
    <p>ЗАДАЧА ЗАВЕРШЕНА</p>
-   <div>{{todo.completed ? 'ДА' : 'НЕТ'}}</div>
-   
+   <p>{{todo.completed ? 'ДА' : 'НЕТ'}}</p>
    <button (click)="onDeleteTodo(todo.id)">УДАЛИТЬ ЗАДАЧУ</button>
    <button (click)="openTodo()">РЕДАКТИРОВАТЬ ЗАДАЧУ</button>
 </div>

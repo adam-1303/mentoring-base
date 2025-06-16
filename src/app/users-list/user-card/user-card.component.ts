@@ -5,13 +5,14 @@ import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.co
 import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { User } from "../users-list.component";
+import { CustomUpperCasePipe } from "../../pipes/upper-case.pipe";
 
 @Component({
    selector: 'app-user-card',
    standalone: true,
    templateUrl: './user-card.component.html',
    styleUrl: './user-card.component.scss',
-   imports: [MatSnackBarModule]
+   imports: [MatSnackBarModule, CustomUpperCasePipe]
 })
 
 export class UserCardComponent {

@@ -4,10 +4,10 @@ const aboutCompanyFn = (text: string) => text;
 
 const aboutCompany = aboutCompanyFn('О компании');
 
-const menuItems = ['Каталог', 'Стройматериалы', 'Инструменты', 'Электрика', 'Интерьер и одежда']
 
 export class HeaderComponent {
-isShowCatalog : boolean = true;
+
+   isShowCatalog : boolean = true;
 
    readonly headerItem1 = 'Главная'
 
