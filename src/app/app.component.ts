@@ -1,7 +1,10 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { YellowDirective } from './directives/yellow.directive';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthComponent } from './auth/auth.component';
+import { UserService } from './user.service';
 
 const newPages = [5, 4, 3, 2, 1 ]
 
@@ -21,16 +24,19 @@ const upperCaseMenuItems = menuItems.map(
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgFor, RouterLink,CommonModule,YellowDirective],
+  imports: [RouterOutlet, NgIf, NgFor, RouterLink, CommonModule, YellowDirective,AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  private readonly dialog = inject(MatDialog);
+  public readonly userService = inject(UserService);
+
   today: Date = new Date();
 
   title = 'mentoring-first';
 
-  isShowCatalog : boolean = true;
+  isShowCatalog: boolean = true;
 
   readonly headerItem1 = 'Главная';
 
@@ -38,9 +44,9 @@ export class AppComponent {
 
   readonly header2Item4: string = upperCaseMenuItems[0];
 
-  readonly aboutCompany : string = aboutCompany;
+  readonly aboutCompany: string = aboutCompany;
 
-  menuItems : string[] = upperCaseMenuItems;
+  menuItems: string[] = upperCaseMenuItems;
 
   readonly headerItem3 = 'Каталог';
 
@@ -54,16 +60,39 @@ export class AppComponent {
 
   readonly header2item4 = 'Интерьер и Одежда';
 
-  isShowImg : boolean = true;
+  isShowImg: boolean = true;
 
   isUppersCase = true;
   
   newPages: number[] = newPages;
 
   changeMenuText() {
-  this.menuItems = upperCaseMenuItems.map(
-  item => this.isUppersCase ? item.toLowerCase() : item.toUpperCase()
-  )
-  this.isUppersCase = !this.isUppersCase
+    this.menuItems = upperCaseMenuItems.map(
+      item => this.isUppersCase ? item.toLowerCase() : item.toUpperCase()
+    )
+    this.isUppersCase = !this.isUppersCase;
   }
+
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(AuthComponent, {
+      width: "500px",
+      height: "300px"
+    });
+  
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result === 'admin') {
+        this.userService.loginAsAdmin()
+      } else if (result === 'user') {
+        this.userService.loginAsUser()
+      } else return undefined;
+    }
+    );
+  }
+
+  public logout() {
+    if (confirm('Вы точно хотите выйти?')) {
+      return this.userService.logout();
+    }
+    else return false;
+  } 
 }

@@ -1,10 +1,10 @@
 
    <div appShadow class="users">
-   <p red>{{user.name | customUpperCase }}</p>
-   <p red>{{user.username | customUpperCase }}</p>
-   <p red>{{user.email | customUpperCase }}</p>
-   <p red>{{user.website | customUpperCase }}</p>
-   <p red>{{user.company.name | customUpperCase }}</p>
+   <p red>{{ user.name | customUpperCase }}</p>
+   <p red>{{ user.username | customUpperCase }}</p>
+   <p red>{{ user.email | customUpperCase }}</p>
+   <p red>{{ user.website | customUpperCase }}</p>
+   <p red>{{ user.company.name | customUpperCase }}</p>
    <button red mat-raised-button  (click)="onDeleteUser()">УДАЛИТЬ ЮЗЕРА</button>
    <button 
       red
