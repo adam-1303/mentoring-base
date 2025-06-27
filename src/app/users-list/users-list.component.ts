@@ -2,8 +2,10 @@ import { AsyncPipe, NgFor } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { UsersApiService } from "../users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
-import { UsersService } from "../users.service";
 import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
+import { Store } from "@ngrx/store";
+import { UsersActions } from "./store/users.actions";
+import { selectUsers } from "./store/users.selectors";
 
 export interface User {
       id: number;
@@ -49,31 +51,37 @@ export interface Users {
 
 export class UsersListComponent {
       readonly usersApiService = inject(UsersApiService);
-      readonly usersService = inject(UsersService);
-      
+      private readonly store = inject(Store);
+      public readonly users$ = this.store.select(selectUsers);
+
       constructor() {
             this.usersApiService.getUsers().subscribe((response: User[]) => {
-                  this.usersService.setUsers(response);
+                  this.store.dispatch(UsersActions.set({ users: response }));
             });
       }
 
       deleteUser(id: number) {
-            this.usersService.deleteUser(id)
+            this.store.dispatch(UsersActions.delete({ id }));
       };
 
       editUser(user: User) {
-            this.usersService.editUser(user)
+            this.store.dispatch(UsersActions.edit({ user }));
       };
 
       public createUser(formData: Users) {
-      this.usersService.creatUser({
-            id: new Date().getTime(),
-            name: formData.name,
-            username: formData.username,
-            email: formData.email,
-            website: formData.website,
-            company: {
-                  name: formData.companyName}
-            });
+            this.store.dispatch(
+                  UsersActions.create({
+                        user: {
+                              id: new Date().getTime(),
+                              name: formData.name,
+                              username: formData.username,
+                              email: formData.email,
+                              website: formData.website,
+                              company: {
+                                    name: formData.companyName
+                              },
+                        },
+                  })
+            );
       };
 };

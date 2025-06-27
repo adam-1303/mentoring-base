@@ -2,8 +2,10 @@ import { AsyncPipe, NgFor } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { TodoCardComponent } from "./todo-card/todo-card.component";
 import { TodosApiService } from "../todos-api.service";
-import { TodosService } from "../todos.service";
 import { CreateTodosFormComponent } from "../create-todos-form/create-todos-form.component";
+import { Store } from "@ngrx/store";
+import { selectTodos } from "./todo-store/todos.selectors";
+import { TodosActions } from "./todo-store/todos.actions";
 
 export interface Todo {
       "userId": number,
@@ -24,29 +26,32 @@ export interface Todo {
 export class TodosListComponent{
 
       readonly todosApiService = inject(TodosApiService);
-      readonly todosService = inject(TodosService)
+      private readonly store = inject(Store);
+      public readonly todos$ = this.store.select(selectTodos)
 
       constructor() {
-      this.todosApiService.getTodos().subscribe(
-            (response: any) => {
-                  this.todosService.setTodos(response)
-            }
-      )
+            this.todosApiService.getTodos().subscribe((response: Todo[]) => {
+                  this.store.dispatch(TodosActions.set({ todos: response }));
+            });
       }
       deleteTodo(id: number) {
-            this.todosService.deleteTodo(id)
+            this.store.dispatch(TodosActions.delete({ id }));
       }
 
       editTodo(todo: Todo) {
-            this.todosService.editTodo(todo)
+            this.store.dispatch(TodosActions.edit({ todo }));
       }
 
       public createTodos(formItem: Todo) {
-      this.todosService.creatTodo({
-            id: new Date().getTime(),
-            userId: formItem.userId,
-            title: formItem.title,
-            completed: formItem.completed,
-            });
-      }
-}
+            this.store.dispatch(
+                  TodosActions.create({
+                        todo: {
+                              id: new Date().getTime(),
+                              userId: formItem.userId,
+                              title: formItem.title,
+                              completed: formItem.completed
+                        },
+                  })
+            );
+      };
+};

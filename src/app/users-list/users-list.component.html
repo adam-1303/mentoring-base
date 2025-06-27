@@ -1,7 +1,7 @@
 <app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
 
    <div class="item">
-      <div *ngFor="let user of usersService.usersSubject | async">
+      <div *ngFor="let user of users$ | async">
          <app-user-card 
             [user]="user" 
             (deleteUser)="deleteUser($event)"
